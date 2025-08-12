@@ -9,6 +9,10 @@
       "csp": null
     }
   },
+  "build": {
+    "beforeDevCommand": "npm run build",
+    "beforeBuildCommand": "npm run build"
+  },
   "bundle": {
     "publisher": "robertpakalns",
     "active": true,
