@@ -17,17 +17,6 @@ fn main() {
         .invoke_handler(generate_handler![change_url])
         .setup(|app| {
             let script = include_str!("../../frontend-dist/script.js");
-            let style = include_str!("../../assets/style.css");
-
-            let inject_script = format!(
-                r#"
-                document.addEventListener("DOMContentLoaded", () => {{
-                    const style = document.createElement('style');
-                    style.innerHTML = `{style}`;
-                    document.head.appendChild(style);
-                }})
-                "#,
-            );
 
             WebviewWindowBuilder::new(
                 app,
@@ -36,7 +25,6 @@ fn main() {
             )
             .title("AI Client")
             .initialization_script(script)
-            .initialization_script(inject_script)
             .build()
             .unwrap();
 

@@ -7,7 +7,7 @@ export default defineConfig({
     outDir: "./frontend-dist",
     emptyOutDir: true,
     rollupOptions: {
-      input: "./src/index.js",
+      input: "./src/index.ts",
       output: {
         entryFileNames: "script.js",
       },

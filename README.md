@@ -1,5 +1,7 @@
 # AI Client
-A client to use AI tools
+A client for using large language models (LLM)
 
-List of supported AI:
+List of supported LLMs:
 * ChatGPT
+* DeepSeek
+* Grok
