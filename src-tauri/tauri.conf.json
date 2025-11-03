@@ -10,8 +10,8 @@
     }
   },
   "build": {
-    "beforeDevCommand": "npm run build",
-    "beforeBuildCommand": "npm run build"
+    "beforeDevCommand": "bun run build",
+    "beforeBuildCommand": "bun run build"
   },
   "bundle": {
     "publisher": "robertpakalns",
