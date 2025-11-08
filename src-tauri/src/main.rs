@@ -21,7 +21,7 @@ fn main() {
     Builder::default()
         .invoke_handler(generate_handler![change_url, open_external])
         .setup(|app| {
-            let script = include_str!("../../frontend-dist/script.js");
+            let script = include_str!("../../frontend-dist/index.js");
 
             WebviewWindowBuilder::new(
                 app,

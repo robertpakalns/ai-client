@@ -1,8 +1,8 @@
 import { createPanel, type llmArr } from "./panel";
-import styles from "../assets/style.css?raw";
-import chatGTPIcon from "../assets/icons/chatgpt.svg";
-import deepSeekIcon from "../assets/icons/deepseek.svg";
-import grokIcon from "../assets/icons/grok.svg";
+import styles from "../assets/style.css" with { type: "text" };
+import chatGTPIcon from "../assets/icons/chatgpt.svg" with { type: "text" };
+import deepSeekIcon from "../assets/icons/deepseek.svg" with { type: "text" };
+import grokIcon from "../assets/icons/grok.svg" with { type: "text" };
 
 import { invoke } from "@tauri-apps/api/core";
 

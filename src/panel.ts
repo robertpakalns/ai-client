@@ -34,8 +34,10 @@ export const createPanel = (items: llmArr[]) => {
     });
 
     const img = document.createElement("img");
-    img.src = item.svg;
-    link.appendChild(img);
+    const svgEncoded = encodeURIComponent(item.svg)
+      .replace(/'/g, "%27")
+      .replace(/"/g, "%22");
+    img.src = `data:image/svg+xml,${svgEncoded}`;
 
     const label = document.createElement("div");
     label.innerText = item.name;

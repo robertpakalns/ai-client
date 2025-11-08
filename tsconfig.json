@@ -1,4 +1,8 @@
 {
-  "include": ["src", "vite-env.d.ts"],
+  "compilerOptions": {
+    "module": "esnext",
+    "moduleResolution": "node"
+  },
+  "include": ["src", "bun-env.d.ts"],
   "exclude": ["node_modules", "src-tauri/target"]
 }
