@@ -12,9 +12,14 @@ fn change_url(app: AppHandle, url: String) {
     }
 }
 
+#[tauri::command]
+fn open_external(url: String) {
+    webbrowser::open(&url).ok();
+}
+
 fn main() {
     Builder::default()
-        .invoke_handler(generate_handler![change_url])
+        .invoke_handler(generate_handler![change_url, open_external])
         .setup(|app| {
             let script = include_str!("../../frontend-dist/script.js");
 

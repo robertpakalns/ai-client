@@ -10,3 +10,4 @@ tauri-build = { version = "2.5.1", features = [] }
 
 [dependencies]
 tauri = { version = "2.9.2", features = [] }
+webbrowser = "1.0.6"

@@ -4,6 +4,8 @@ import chatGTPIcon from "../assets/icons/chatgpt.svg";
 import deepSeekIcon from "../assets/icons/deepseek.svg";
 import grokIcon from "../assets/icons/grok.svg";
 
+import { invoke } from "@tauri-apps/api/core";
+
 const arr: llmArr[] = [
   {
     name: "ChatGPT",
@@ -28,4 +30,15 @@ document.addEventListener("DOMContentLoaded", () => {
   document.head.appendChild(style);
 
   createPanel(arr);
+
+  document.addEventListener("click", (e) => {
+    const a = (e.target as HTMLElement).closest("a");
+    if (!a) return;
+
+    const target = a.getAttribute("target");
+    if (target === "_blank" || target === "_new") {
+      e.preventDefault();
+      invoke("open_external", { url: a.href });
+    }
+  });
 });
