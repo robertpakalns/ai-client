@@ -5,9 +5,18 @@ description = "A client to use AI tools"
 authors = ["robertpakalns"]
 edition = "2024"
 
+[profile.release]
+panic = "abort"
+codegen-units = 1
+lto = true
+opt-level = "s"
+strip = "symbols"
+debug = false
+debug-assertions = false
+
 [build-dependencies]
-tauri-build = { version = "2.5.1", features = [] }
+tauri-build = { version = "2.5.3", default-features = false, features = [] }
 
 [dependencies]
-tauri = { version = "2.9.2", features = [] }
-webbrowser = "1.0.6"
+tauri = { version = "2.9.5", default-features = false, features = ["wry"] }
+webbrowser = { version = "1.0.6", default-features = false }

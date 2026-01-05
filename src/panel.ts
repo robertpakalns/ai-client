@@ -1,12 +1,12 @@
 import { invoke } from "@tauri-apps/api/core";
 
-export interface llmArr {
+export interface Elements {
   name: string;
   svg: string;
   url: string;
 }
 
-export const createPanel = (items: llmArr[]) => {
+export const createPanel = (items: Elements[]): void => {
   const panel = document.createElement("div");
   panel.classList.add("panel");
   document.body.appendChild(panel);
@@ -29,9 +29,10 @@ export const createPanel = (items: llmArr[]) => {
     link.style.top = `${y}px`;
     link.style.left = `${x}px`;
 
-    link.addEventListener("click", () => {
-      invoke("change_url", { url: item.url });
-    });
+    link.addEventListener(
+      "click",
+      (): Promise<void> => invoke("change_url", { url: item.url }),
+    );
 
     const img = document.createElement("img");
     const svgEncoded = encodeURIComponent(item.svg)
@@ -47,14 +48,14 @@ export const createPanel = (items: llmArr[]) => {
     circleContainer.appendChild(link);
   });
 
-  document.addEventListener("keydown", (e) => {
+  document.addEventListener("keydown", (e: KeyboardEvent): void => {
     if (e.key !== "F1") return;
     e.preventDefault();
     panel.style.opacity = "1";
     panel.style.visibility = "visible";
   });
 
-  document.addEventListener("keyup", (e) => {
+  document.addEventListener("keyup", (e: KeyboardEvent): void => {
     if (e.key !== "F1") return;
     e.preventDefault();
     panel.style.opacity = "0";

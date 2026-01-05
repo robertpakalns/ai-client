@@ -5,9 +5,9 @@
     "build": "bun build ./src/index.ts --outdir ./frontend-dist --minify"
   },
   "devDependencies": {
-    "@tauri-apps/cli": "^2.9.3"
+    "@tauri-apps/cli": "2.9.5"
   },
   "dependencies": {
-    "@tauri-apps/api": "^2.9.0"
+    "@tauri-apps/api": "2.9.1"
   }
 }
