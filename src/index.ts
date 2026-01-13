@@ -1,4 +1,4 @@
-import { createPanel, type llmArr } from "./panel";
+import { createPanel, type Icon } from "./panel";
 import styles from "../assets/style.css" with { type: "text" };
 import chatGTPIcon from "../assets/icons/chatgpt.svg" with { type: "text" };
 import deepSeekIcon from "../assets/icons/deepseek.svg" with { type: "text" };
@@ -6,23 +6,45 @@ import grokIcon from "../assets/icons/grok.svg" with { type: "text" };
 
 import { invoke } from "@tauri-apps/api/core";
 
-const arr: llmArr[] = [
+const arr: Icon[] = [
   {
     name: "ChatGPT",
     svg: chatGTPIcon,
-    url: "https://chatgpt.com",
+    host: "chatgpt.com",
   },
   {
     name: "DeepSeek",
     svg: deepSeekIcon,
-    url: "https://chat.deepseek.com",
+    host: "chat.deepseek.com",
   },
   {
     name: "Grok",
     svg: grokIcon,
-    url: "https://grok.com",
+    host: "grok.com",
   },
 ];
+
+// Monkey-patch fetch to block resources that are not needed for working with the LLMs
+const blockRequests = async (): Promise<void> => {
+  const _fetch = window.fetch;
+
+  window.fetch = async (input, init) => {
+    let url: URL;
+    try {
+      url = new URL(input.toString(), window.location.href);
+    } catch (e) {
+      return _fetch(input, init);
+    }
+
+    if (!arr.some((el) => el.host === url.host)) {
+      return new Response(null, { status: 204 });
+    }
+
+    return _fetch(input, init);
+  };
+};
+
+blockRequests();
 
 document.addEventListener("DOMContentLoaded", () => {
   const style = document.createElement("style");

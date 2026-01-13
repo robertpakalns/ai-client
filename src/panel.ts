@@ -1,12 +1,12 @@
 import { invoke } from "@tauri-apps/api/core";
 
-export interface Elements {
+export interface Icon {
   name: string;
   svg: string;
-  url: string;
+  host: string;
 }
 
-export const createPanel = (items: Elements[]): void => {
+export const createPanel = (items: Icon[]): void => {
   const panel = document.createElement("div");
   panel.classList.add("panel");
   document.body.appendChild(panel);
@@ -29,10 +29,9 @@ export const createPanel = (items: Elements[]): void => {
     link.style.top = `${y}px`;
     link.style.left = `${x}px`;
 
-    link.addEventListener(
-      "click",
-      (): Promise<void> => invoke("change_url", { url: item.url }),
-    );
+    link.addEventListener("click", (): void => {
+      window.location.host = item.host;
+    });
 
     const img = document.createElement("img");
     const svgEncoded = encodeURIComponent(item.svg)
