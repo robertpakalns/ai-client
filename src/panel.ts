@@ -30,7 +30,7 @@ export const createPanel = (items: Icon[]): void => {
     link.style.left = `${x}px`;
 
     link.addEventListener("click", (): void => {
-      window.location.host = item.host;
+      window.location.href = `https://${item.host}`;
     });
 
     const img = document.createElement("img");

@@ -37,7 +37,7 @@ const blockRequests = async (): Promise<void> => {
     }
 
     if (!arr.some((el) => el.host === url.host)) {
-      return new Response(null, { status: 204 });
+      return Promise.reject(new Error("Blocked by AI Client fetch filter"));
     }
 
     return _fetch(input, init);
@@ -53,14 +53,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   createPanel(arr);
 
-  document.addEventListener("click", (e) => {
+  document.addEventListener("click", async (e) => {
     const a = (e.target as HTMLElement).closest("a");
     if (!a) return;
 
     const target = a.getAttribute("target");
     if (target === "_blank" || target === "_new") {
       e.preventDefault();
-      invoke("open_external", { url: a.href });
+      await invoke("open_external", { url: a.href });
     }
   });
 });
