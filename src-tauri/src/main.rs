@@ -4,7 +4,6 @@ use tauri::{Builder, WebviewUrl, WebviewWindowBuilder, generate_context, generat
 
 #[tauri::command]
 fn open_external(url: String) {
-    println!("{url}");
     webbrowser::open(&url).ok();
 }
 

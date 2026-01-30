@@ -1,7 +1,7 @@
-node_modules
-dist
-frontend-dist
+/node_modules/
+/dist/
+/frontend-dist/
 
-src-tauri/target
-src-tauri/gen/schemas
-target
+/src-tauri/target/
+/src-tauri/gen/schemas/
+/target/

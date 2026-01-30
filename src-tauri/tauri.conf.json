@@ -4,7 +4,6 @@
   "version": "0.1.0",
   "identifier": "pro.tricko.ai-client",
   "app": {
-    "withGlobalTauri": true,
     "security": {
       "csp": null
     }
