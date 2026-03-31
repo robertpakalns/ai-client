@@ -1,6 +1,9 @@
 import { createPanel, type Icon } from "./panel";
 import styles from "../assets/style.css" with { type: "text" };
+
+// Icons
 import chatGTPIcon from "../assets/icons/chatgpt.svg" with { type: "text" };
+import claudeIcon from "../assets/icons/claude.svg" with { type: "text" };
 import deepSeekIcon from "../assets/icons/deepseek.svg" with { type: "text" };
 import grokIcon from "../assets/icons/grok.svg" with { type: "text" };
 
@@ -21,6 +24,11 @@ const arr: Icon[] = [
     name: "Grok",
     svg: grokIcon,
     host: "grok.com",
+  },
+  {
+    name: "Claude",
+    svg: claudeIcon,
+    host: "claude.ai",
   },
 ];
 
