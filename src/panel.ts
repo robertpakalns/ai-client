@@ -1,8 +1,6 @@
-import { invoke } from "@tauri-apps/api/core";
-
 export interface Icon {
   name: string;
-  svg: string;
+  icon: string;
   host: string;
 }
 
@@ -34,7 +32,7 @@ export const createPanel = (items: Icon[]): void => {
     });
 
     const img = document.createElement("img");
-    const svgEncoded = encodeURIComponent(item.svg)
+    const svgEncoded = encodeURIComponent(item.icon)
       .replace(/'/g, "%27")
       .replace(/"/g, "%22");
     img.src = `data:image/svg+xml,${svgEncoded}`;

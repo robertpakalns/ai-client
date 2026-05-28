@@ -13,27 +13,27 @@ import { invoke } from "@tauri-apps/api/core";
 const arr: Icon[] = [
   {
     name: "ChatGPT",
-    svg: chatGTPIcon,
+    icon: chatGTPIcon,
     host: "chatgpt.com",
   },
   {
     name: "DeepSeek",
-    svg: deepSeekIcon,
+    icon: deepSeekIcon,
     host: "chat.deepseek.com",
   },
   {
     name: "Grok",
-    svg: grokIcon,
+    icon: grokIcon,
     host: "grok.com",
   },
   {
     name: "Claude",
-    svg: claudeIcon,
+    icon: claudeIcon,
     host: "claude.ai",
   },
   {
     name: "Gemini",
-    svg: geminiIcon,
+    icon: geminiIcon,
     host: "gemini.google.com",
   },
 ];
