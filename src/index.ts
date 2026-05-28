@@ -5,6 +5,7 @@ import styles from "../assets/style.css" with { type: "text" };
 import chatGTPIcon from "../assets/icons/chatgpt.svg" with { type: "text" };
 import claudeIcon from "../assets/icons/claude.svg" with { type: "text" };
 import deepSeekIcon from "../assets/icons/deepseek.svg" with { type: "text" };
+import geminiIcon from "../assets/icons/gemini.svg" with { type: "text" };
 import grokIcon from "../assets/icons/grok.svg" with { type: "text" };
 
 import { invoke } from "@tauri-apps/api/core";
@@ -29,6 +30,11 @@ const arr: Icon[] = [
     name: "Claude",
     svg: claudeIcon,
     host: "claude.ai",
+  },
+  {
+    name: "Gemini",
+    svg: geminiIcon,
+    host: "gemini.google.com",
   },
 ];
 
