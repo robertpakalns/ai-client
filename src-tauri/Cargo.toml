@@ -15,8 +15,8 @@ debug = false
 debug-assertions = false
 
 [build-dependencies]
-tauri-build = { version = "2.5.6", default-features = false, features = [] }
+tauri-build = { version = "2.6.2", default-features = false, features = [] }
 
 [dependencies]
-tauri = { version = "2.10.3", default-features = false, features = ["wry"] }
-webbrowser = { version = "1.2.0", default-features = false }
+tauri = { version = "2.11.2", default-features = false, features = ["wry"] }
+webbrowser = { version = "1.2.1", default-features = false }
