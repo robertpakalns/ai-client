@@ -62,7 +62,7 @@ blockRequests();
 
 document.addEventListener("DOMContentLoaded", () => {
   const style = document.createElement("style");
-  style.innerHTML = styles;
+  style.textContent = styles;
   document.head.appendChild(style);
 
   createPanel(arr);

@@ -38,7 +38,7 @@ export const createPanel = (items: Icon[]): void => {
     img.src = `data:image/svg+xml,${svgEncoded}`;
 
     const label = document.createElement("div");
-    label.innerText = item.name;
+    label.textContent = item.name;
 
     link.appendChild(img);
     link.appendChild(label);
