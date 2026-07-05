@@ -4,6 +4,11 @@ export interface Icon {
   host: string;
 }
 
+const RADIUS = 150;
+const CENTER_X = 200;
+const CENTER_Y = 200;
+const KEYBIND = "F1";
+
 export const createPanel = (items: Icon[]): void => {
   const panel = document.createElement("div");
   panel.classList.add("panel");
@@ -13,14 +18,10 @@ export const createPanel = (items: Icon[]): void => {
   circleContainer.classList.add("circle");
   panel.appendChild(circleContainer);
 
-  const radius = 150;
-  const centerX = 200;
-  const centerY = 200;
-
   items.forEach((item, i) => {
     const angle = (i / items.length) * 2 * Math.PI;
-    const x = centerX + radius * Math.cos(angle) - 40;
-    const y = centerY + radius * Math.sin(angle) - 40;
+    const x = CENTER_X + RADIUS * Math.cos(angle) - 40;
+    const y = CENTER_Y + RADIUS * Math.sin(angle) - 40;
 
     const link = document.createElement("div");
     link.classList.add("item");
@@ -46,14 +47,14 @@ export const createPanel = (items: Icon[]): void => {
   });
 
   document.addEventListener("keydown", (e: KeyboardEvent): void => {
-    if (e.key !== "F1") return;
+    if (e.key !== KEYBIND) return;
     e.preventDefault();
     panel.style.opacity = "1";
     panel.style.visibility = "visible";
   });
 
   document.addEventListener("keyup", (e: KeyboardEvent): void => {
-    if (e.key !== "F1") return;
+    if (e.key !== KEYBIND) return;
     e.preventDefault();
     panel.style.opacity = "0";
     panel.style.visibility = "hidden";
