@@ -60,13 +60,13 @@ const blockRequests = async (): Promise<void> => {
 
 blockRequests();
 
-document.addEventListener("DOMContentLoaded", () => {
+const injectStyles = (): void => {
   const style = document.createElement("style");
   style.textContent = styles;
   document.head.appendChild(style);
+};
 
-  createPanel(arr);
-
+const openExternalLinks = (): void => {
   document.addEventListener("click", async (e) => {
     const a = (e.target as HTMLElement).closest("a");
     if (!a) return;
@@ -77,4 +77,10 @@ document.addEventListener("DOMContentLoaded", () => {
       await invoke("open_external", { url: a.href });
     }
   });
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+  injectStyles();
+  createPanel(arr);
+  openExternalLinks();
 });
