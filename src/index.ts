@@ -8,8 +8,6 @@ import deepSeekIcon from "../assets/icons/deepseek.svg" with { type: "text" };
 import geminiIcon from "../assets/icons/gemini.svg" with { type: "text" };
 import grokIcon from "../assets/icons/grok.svg" with { type: "text" };
 
-import { invoke } from "@tauri-apps/api/core";
-
 const arr: Icon[] = [
   {
     name: "ChatGPT",
@@ -66,21 +64,7 @@ const injectStyles = (): void => {
   document.head.appendChild(style);
 };
 
-const openExternalLinks = (): void => {
-  document.addEventListener("click", async (e) => {
-    const a = (e.target as HTMLElement).closest("a");
-    if (!a) return;
-
-    const target = a.getAttribute("target");
-    if (target === "_blank" || target === "_new") {
-      e.preventDefault();
-      await invoke("open_external", { url: a.href });
-    }
-  });
-};
-
 document.addEventListener("DOMContentLoaded", () => {
   injectStyles();
   createPanel(arr);
-  openExternalLinks();
 });
