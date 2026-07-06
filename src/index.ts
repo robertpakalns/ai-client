@@ -36,7 +36,15 @@ const arr: Icon[] = [
   },
 ];
 
-// Monkey-patch fetch to block resources that are not needed for working with the LLMs
+const restrictedDomains: string[] = [
+  "cookielaw.org",
+  "stripe.com",
+  "cloudflareinsights.com",
+  "googletagmanager.com",
+  "s-cdn.anthropic.com",
+];
+
+// Monkey-patch fetch to block specific restricted domains
 const blockRequests = async (): Promise<void> => {
   const _fetch = window.fetch;
 
@@ -48,8 +56,14 @@ const blockRequests = async (): Promise<void> => {
       return _fetch(input, init);
     }
 
-    if (!arr.some((el) => el.host === url.host)) {
-      return Promise.reject(new Error("Blocked by AI Client fetch filter"));
+    const isRestricted = restrictedDomains.some(
+      (domain) => url.host === domain || url.host.endsWith(`.${domain}`),
+    );
+
+    if (isRestricted) {
+      return Promise.reject(
+        new Error(`Blocked by AI Client fetch filter: ${url.host}`),
+      );
     }
 
     return _fetch(input, init);
