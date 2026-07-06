@@ -1,15 +1,10 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
-use tauri::{Builder, WebviewUrl, WebviewWindowBuilder, generate_context, generate_handler};
-
-#[tauri::command]
-fn open_external(url: String) {
-    webbrowser::open(&url).ok();
-}
+use tauri::{Builder, WebviewUrl, WebviewWindowBuilder, generate_context};
 
 fn main() {
     Builder::default()
-        .invoke_handler(generate_handler![open_external])
+        .plugin(tauri_plugin_shell::init())
         .setup(|app| {
             let script = include_str!("../../frontend-dist/index.js");
 
