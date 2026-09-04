@@ -7,6 +7,7 @@ import claudeIcon from "../assets/icons/claude.svg" with { type: "text" };
 import deepSeekIcon from "../assets/icons/deepseek.svg" with { type: "text" };
 import geminiIcon from "../assets/icons/gemini.svg" with { type: "text" };
 import grokIcon from "../assets/icons/grok.svg" with { type: "text" };
+import zaiIcon from "../assets/icons/zai.svg" with { type: "text" };
 
 const arr: Icon[] = [
   {
@@ -33,6 +34,11 @@ const arr: Icon[] = [
     name: "Gemini",
     icon: geminiIcon,
     host: "gemini.google.com",
+  },
+  {
+    name: "Z.ai",
+    icon: zaiIcon,
+    host: "chat.z.ai",
   },
 ];
 
