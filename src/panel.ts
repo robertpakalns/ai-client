@@ -96,25 +96,25 @@ export const createPanel = (items: Icon[]): void => {
     );
     image.setAttribute("x", `${iconPos.x - 4}`);
     image.setAttribute("y", `${iconPos.y - 4}`);
-    image.setAttribute("width", "8");
-    image.setAttribute("height", "8");
+    image.setAttribute("width", "10");
+    image.setAttribute("height", "10");
     image.setAttribute("pointer-events", "none");
 
     group.appendChild(image);
 
-    const labelPos = point(LABEL_RADIUS, middle);
-    const label = svg("text");
+    // const labelPos = point(LABEL_RADIUS, middle);
+    // const label = svg("text");
 
-    label.classList.add("menu-label");
-    label.setAttribute("x", `${labelPos.x}`);
-    label.setAttribute("y", `${labelPos.y}`);
-    label.setAttribute("text-anchor", "middle");
-    label.setAttribute("dominant-baseline", "middle");
-    label.setAttribute("pointer-events", "none");
+    // label.classList.add("menu-label");
+    // label.setAttribute("x", `${labelPos.x}`);
+    // label.setAttribute("y", `${labelPos.y}`);
+    // label.setAttribute("text-anchor", "middle");
+    // label.setAttribute("dominant-baseline", "middle");
+    // label.setAttribute("pointer-events", "none");
 
-    label.textContent = item.name;
+    // label.textContent = item.name;
 
-    group.appendChild(label);
+    // group.appendChild(label);
     menu.appendChild(group);
     menuItems.push(group);
 
